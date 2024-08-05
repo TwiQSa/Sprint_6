@@ -9,14 +9,14 @@ from selenium.webdriver.support import expected_conditions
 import time
 
 faq_data = [
-    (home_faq_price, home_faq_price_text),
-    (home_faq_multiple_scooters, home_faq_multiple_scooters_text),
-    (home_faq_rent_time, home_faq_rent_time_text),
-    (home_faq_rent_today, home_faq_rent_today_text),
-    (home_faq_rent_prolongation, home_faq_rent_prolongation_text),
-    (home_faq_charger, home_faq_charger_text),
-    (home_faq_order_denial, home_faq_order_denial_text),
-    (home_faq_mkad, home_faq_mkad_text)
+    (HOME_FAQ_PRICE, HOME_FAQ_PRICE_TEXT),
+    (HOME_FAQ_MULTIPLE_SCOOTERS, HOME_FAQ_MULTIPLE_SCOOTERS_TEXT),
+    (HOME_FAQ_RENT_TIME, HOME_FAQ_RENT_TIME_TEXT),
+    (HOME_FAQ_RENT_TODAY, HOME_FAQ_RENT_TODAY_TEXT),
+    (HOME_FAQ_RENT_PROLONGATION, HOME_FAQ_RENT_PROLONGATION_TEXT),
+    (HOME_FAQ_CHARGER, HOME_FAQ_CHARGER_TEXT),
+    (HOME_FAQ_ORDER_DENIAL, HOME_FAQ_ORDER_DENIAL_TEXT),
+    (HOME_FAQ_MKAD, HOME_FAQ_MKAD_TEXT)
 ]
 
 
@@ -27,11 +27,15 @@ class TestLandingPage:
         cls.driver.get("https://qa-scooter.praktikum-services.ru/")
         cls.page = LandingPage(cls.driver)
 
-        WebDriverWait(cls.driver, 5).until(expected_conditions.element_to_be_clickable(cookie_accept_button)).click()
+        WebDriverWait(cls.driver, 5).until(expected_conditions.element_to_be_clickable(COOKIE_ACCEPT_BUTTON)).click()
 
-        faq_title_visible = WebDriverWait(cls.driver, 10).until(expected_conditions.visibility_of_element_located(faq_title))
+        faq_title_visible = WebDriverWait(cls.driver, 10).until(expected_conditions.visibility_of_element_located(FAQ_TITLE))
         cls.driver.execute_script("arguments[0].scrollIntoView();", faq_title_visible)
-        time.sleep(5)
+        WebDriverWait(cls.driver, 10).until(expected_conditions.visibility_of_element_located(HOME_FAQ_PRICE))
+        WebDriverWait(cls.driver, 10).until(expected_conditions.visibility_of_element_located(HOME_FAQ_MULTIPLE_SCOOTERS))
+        WebDriverWait(cls.driver, 10).until(expected_conditions.visibility_of_element_located(HOME_FAQ_RENT_TIME))
+        WebDriverWait(cls.driver, 10).until(expected_conditions.visibility_of_element_located(HOME_FAQ_MKAD))
+        WebDriverWait(cls.driver, 10).until(expected_conditions.visibility_of_element_located(HOME_FAQ_CHARGER))
 
     @pytest.mark.parametrize("locator, expected_text_xpath", faq_data)
     def test_faq(self, locator, expected_text_xpath):

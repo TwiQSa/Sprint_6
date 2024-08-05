@@ -7,55 +7,55 @@ class OrderPage:
         self.driver = driver
 
     def enter_name(self, name):
-        self.driver.find_element(*name_field).send_keys(name)
+        self.driver.find_element(*NAME_FIELD).send_keys(name)
 
     def enter_surname(self, surname):
-        self.driver.find_element(*surname_field).send_keys(surname)
+        self.driver.find_element(*SURNAME_FIELD).send_keys(surname)
 
     def enter_address(self, address):
-        self.driver.find_element(*address_field).send_keys(address)
+        self.driver.find_element(*ADDRESS_FIELD).send_keys(address)
 
     def select_metro_station(self, station_name):
-        metro_station_input = self.driver.find_element(*metro_stations)
+        metro_station_input = self.driver.find_element(*METRO_STATIONS)
         self.driver.execute_script("arguments[0].value = arguments[1];", metro_station_input, station_name)
 
     def enter_phone(self, phone):
-        self.driver.find_element(*phone_field).send_keys(phone)
+        self.driver.find_element(*PHONE_FIELD).send_keys(phone)
 
     def click_next_button(self):
-        self.driver.find_element(*next_button).click()
+        self.driver.find_element(*NEXT_BUTTON).click()
 
     def set_date_of_delivery(self, date):
-        self.driver.find_element(*date_of_delivery).date_field.send_keys(date)
+        self.driver.find_element(*DATE_OF_DELIVERY).date_field.send_keys(date)
 
     def set_length_of_rent_two_days(self):
-        rent_field = self.driver.find_element(*length_of_rent)
+        rent_field = self.driver.find_element(*LENGTH_OF_RENT)
         rent_field.click()
 
-        two_days_option = WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable(two_days_rent))
+        two_days_option = WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable(TWO_DAYS_RENT))
         two_days_option.click()
 
     def set_length_of_rent_five_days(self):
-        rent_field = self.driver.find_element(*length_of_rent)
+        rent_field = self.driver.find_element(*LENGTH_OF_RENT)
         rent_field.click()
 
-        five_days_option = WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable(five_days_rent))
+        five_days_option = WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable(FIVE_DAYS_RENT))
         five_days_option.click()
 
     def click_check_box_black(self):
-        self.driver.find_element(*check_box_black).click()
+        self.driver.find_element(*CHECK_BOX_BLACK).click()
 
     def click_check_box_grey(self):
-        self.driver.find_element(*check_box_grey).click()
+        self.driver.find_element(*CHECK_BOX_GREY).click()
 
     def set_comment(self, comment):
-        self.driver.find_element(*comment_field).send_keys(*comment)
+        self.driver.find_element(*COMMENT_FIELD).send_keys(*comment)
 
     def click_order_button_order_page(self):
-        self.driver.find_element(*order_button_order_page).click()
+        self.driver.find_element(*ORDER_BUTTON_ORDER_PAGE).click()
 
     def click_yes_button(self):
-        self.driver.find_element(*yes_button).click()
+        self.driver.find_element(*YES_BUTTON).click()
 
     def click_status_button(self):
-        self.driver.find_element(*status_button).click()
+        self.driver.find_element(*STATUS_BUTTON).click()

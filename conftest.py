@@ -10,6 +10,6 @@ def driver():
     driver = webdriver.Firefox()
     driver.get("https://qa-scooter.praktikum-services.ru/")
     driver.maximize_window()
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(cookie_accept_button)).click()
+    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(COOKIE_ACCEPT_BUTTON)).click()
     yield driver
     driver.quit()
